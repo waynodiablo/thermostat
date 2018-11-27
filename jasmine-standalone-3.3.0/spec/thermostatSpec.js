@@ -20,12 +20,29 @@ describe("Thermostat", function() {
   });
 
   it("has a minimum of 10 degrees", function() {
-      Thermostat.temp = 10;
+      Thermostat.temp = 11;
       Thermostat.down();
+      Thermostat.down();
+      // Thermostat.down().repeat(2);
       expect(Thermostat.temp).toBe(10);
   });
 
+  describe("when power saving mode is on", function() {
+    it("has a maximum temperature 25 degrees", function() {
+      Thermostat.temp = 25;
+      Thermostat.up();
+      expect(Thermostat.temp).toBe(25);
+    });
+  });
 
+  describe("when power saving mode is off", function() {
+    it("has a maximum temperature 25 degrees", function() {
+      Thermostat.togglePowerSaving()
+      Thermostat.temp = 32;
+      Thermostat.up();
+      expect(Thermostat.temp).toBe(32);
+    });
+  });
 
 
 });

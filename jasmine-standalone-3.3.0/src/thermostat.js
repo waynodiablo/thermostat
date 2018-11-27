@@ -1,10 +1,19 @@
 function Thermostat () {
   Thermostat.temp = 20;
-
+  Thermostat.isPowerSaving = true;
 
 
   Thermostat.up = function() {
-    this.temp ++;
+    if ( this.isPowerSaving ) {
+      if ( this.temp < 25 ) {
+        this.temp ++;
+      };
+    }
+    else {
+      if ( this.temp < 32 ) {
+        this.temp ++;
+      };
+    };
   };
 
   Thermostat.down = function() {
@@ -15,6 +24,10 @@ function Thermostat () {
       //   alert( "Minimum temperature is 10 degree!")
       };
   };
+
+  Thermostat.togglePowerSaving = function() {
+    this.isPowerSaving = !this.isPowerSaving;
+  }
 
 
 };
