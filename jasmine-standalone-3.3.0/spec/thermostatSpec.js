@@ -37,7 +37,26 @@ describe("Thermostat", function() {
     expect(Thermostat.temp).toBe(20);
   });
 
+  describe("when low-usage", function() {
+    it("energyUsage should return 'low-usage'", function() {
+      Thermostat.temp = 17
+      expect(Thermostat.energyUsage).toBe("low-usage")
+    })
+  });
 
+  describe("when medium-usage", function() {
+    it("energyUsage should return 'medium-usage'", function() {
+      Thermostat.temp = 24
+      expect(Thermostat.energyUsage).toBe("medium-usage")
+    })
+  });
+
+  describe("when high-usage", function() {
+    it("energyUsage should return 'high-usage'", function() {
+      Thermostat.temp = 25
+      expect(Thermostat.energyUsage).toBe("high-usage")
+    })
+  });
 
   describe("when power saving mode is on", function() {
     it("has a maximum temperature 25 degrees", function() {
@@ -55,6 +74,7 @@ describe("Thermostat", function() {
       expect(Thermostat.temp).toBe(32);
     });
   });
+
 
 
 });
