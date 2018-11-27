@@ -22,12 +22,17 @@ function Thermostat () {
       // }
       // else {
       //   alert( "Minimum temperature is 10 degree!")
-      };
+    };
   };
 
   Thermostat.togglePowerSaving = function() {
     this.isPowerSaving = !this.isPowerSaving;
   }
+
+  Thermostat.reset = function() {
+    this.temp = 20;
+  };
+
 
 
 };
