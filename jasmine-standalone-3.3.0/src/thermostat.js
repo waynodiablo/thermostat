@@ -1,9 +1,9 @@
-function Thermostat () {
-  Thermostat.temp = 20;
-  Thermostat.isPowerSaving = true;
+function Thermostat() {
+  this.temp = 20;
+  this.isPowerSaving = true;
+}
 
-
-  Thermostat.up = function() {
+  Thermostat.prototype.up = function() {
     if ( this.isPowerSaving ) {
       if ( this.temp < 25 ) {
         this.temp ++;
@@ -16,7 +16,7 @@ function Thermostat () {
     };
   };
 
-  Thermostat.down = function() {
+  Thermostat.prototype.down = function() {
       if ( this.temp > 10 ) {
         this.temp --;
       // }
@@ -25,31 +25,21 @@ function Thermostat () {
     };
   };
 
-  // attempted to add this function but breaks all tests
-  // Thermostat.energyUsage = function(this.temp) {
-  //   var text;
-  //   switch (this.temp) {
-  //     case < 18:
-  //       text =  "low-usage";
-  //       break;
-  //     case < 25:
-  //       text =  "medium-usage";
-  //       break;
-  //     default:
-  //       text =  "high-usage";
-  //   };
-  //   return text
-  // };
 
-
-  Thermostat.togglePowerSaving = function() {
+  Thermostat.prototype.togglePowerSaving = function() {
     this.isPowerSaving = !this.isPowerSaving;
   };
 
-  Thermostat.reset = function() {
+  Thermostat.prototype.reset = function() {
     this.temp = 20;
   };
 
-
-
-};
+  Thermostat.prototype.energyUsage = function() {
+    var text = "high-usage"
+    if (this.temp < 18) {
+      text =  "low-usage";
+    } else if (this.temp < 25) {
+      text = "medium-usage";
+    };
+    return text
+  };
