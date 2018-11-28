@@ -1,45 +1,51 @@
+'use strict';
+
 function Thermostat() {
-  this.temp = 20;
+  this.MIN_TEMP = 10;
+  this.DEFAULT_TEMP = 20;
+  this.MAX_TEMP = 32;
+  this.MAX_ECO_TEMP = 25;
   this.isPowerSaving = true;
+  this.temp = 20;
 }
 
   Thermostat.prototype.up = function() {
     if ( this.isPowerSaving ) {
-      if ( this.temp < 25 ) {
+      if ( this.display() < this.MAX_ECO_TEMP ) {
         this.temp ++;
       };
     }
     else {
-      if ( this.temp < 32 ) {
+      if ( this.display() < this.MAX_TEMP ) {
         this.temp ++;
       };
     };
   };
 
   Thermostat.prototype.down = function() {
-      if ( this.temp > 10 ) {
+      if ( this.display() > this.MIN_TEMP ) {
         this.temp --;
-      // }
-      // else {
-      //   alert( "Minimum temperature is 10 degree!")
     };
   };
-
 
   Thermostat.prototype.togglePowerSaving = function() {
     this.isPowerSaving = !this.isPowerSaving;
   };
 
   Thermostat.prototype.reset = function() {
-    this.temp = 20;
+    this.temp = this.DEFAULT_TEMP;
   };
 
   Thermostat.prototype.energyUsage = function() {
     var text = "high-usage"
-    if (this.temp < 18) {
+    if (this.display() < 18) {
       text =  "low-usage";
-    } else if (this.temp < 25) {
+    } else if (this.display() < 25) {
       text = "medium-usage";
     };
     return text
   };
+
+  Thermostat.prototype.display = function() {
+    return this.temp;
+  }

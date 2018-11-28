@@ -1,3 +1,5 @@
+'use strict';
+
 describe("Thermostat", function() {
   var thermostat;
 
@@ -7,17 +9,17 @@ describe("Thermostat", function() {
 });
 
   it("starts at 20 degrees", function() {
-    expect(thermostat.temp).toBe(20);
+    expect(thermostat.display()).toBe(20);
   });
 
   it("increases temperature with an up function", function() {
     thermostat.up();
-    expect(thermostat.temp).toBe(21);
+    expect(thermostat.display()).toBe(21);
   });
 
   it("decreases temperature with a down function", function() {
     thermostat.down();
-    expect(thermostat.temp).toBe(19);
+    expect(thermostat.display()).toBe(19);
   });
 
   it("has a minimum of 10 degrees", function() {
@@ -25,7 +27,7 @@ describe("Thermostat", function() {
       thermostat.down();
       thermostat.down();
       // Thermostat.down().repeat(2);
-      expect(thermostat.temp).toBe(10);
+      expect(thermostat.display()).toBe(10);
   });
 
   it("has Power Saving mode on by default", function() {
@@ -35,7 +37,7 @@ describe("Thermostat", function() {
   it("can reset the temp to 20 with a reset function", function() {
     thermostat.temp = 24;
     thermostat.reset();
-    expect(thermostat.temp).toBe(20);
+    expect(thermostat.display()).toBe(20);
   });
 
   describe("when low-usage", function() {
@@ -63,7 +65,7 @@ describe("Thermostat", function() {
     it("has a maximum temperature 25 degrees", function() {
       thermostat.temp = 25;
       thermostat.up();
-      expect(thermostat.temp).toBe(25);
+      expect(thermostat.display()).toBe(25);
     });
   });
 
@@ -72,7 +74,7 @@ describe("Thermostat", function() {
       thermostat.togglePowerSaving()
       thermostat.temp = 32;
       thermostat.up();
-      expect(thermostat.temp).toBe(32);
+      expect(thermostat.display()).toBe(32);
     });
   });
 
