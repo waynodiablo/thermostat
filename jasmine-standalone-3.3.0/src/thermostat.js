@@ -5,6 +5,7 @@ function Thermostat() {
   this.DEFAULT_TEMP = 20;
   this.MAX_TEMP = 32;
   this.MAX_ECO_TEMP = 25;
+  this.MED_ENERGY_LIMIT = 18;
   this.isPowerSaving = true;
   this.temp = 20;
 }
@@ -38,9 +39,9 @@ function Thermostat() {
 
   Thermostat.prototype.energyUsage = function() {
     var text = "high-usage"
-    if (this.display() < 18) {
+    if (this.display() < this.MED_ENERGY_LIMIT) {
       text =  "low-usage";
-    } else if (this.display() < 25) {
+    } else if (this.display() < this.MAX_ECO_TEMP) {
       text = "medium-usage";
     };
     return text
