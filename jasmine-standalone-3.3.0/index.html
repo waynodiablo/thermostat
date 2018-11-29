@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Thermostat</title>
+  </head>
+  <body align="center"><br><br><br><br><br><br><br><br>
+    <div id="city_weather">
+      <h2>London: </h2>
+      <h2 id="city_temp">waiting...</h2>
+    </div>
+    <div id="temp_section" style="background-color:lightblue">
+      <h1 id="temperature" style="color:white">Temperature:</h1>
+      <h1 id="current_temperature" style="color:white">20</h1>
+    </div>
+    <div id="temp_controls">
+      <button id="up" value="up">UP</button>
+      <button id="down" value="down">DOWN</button>
+    </div>
+    <div id="temp_reset">
+      <button id="reset" value="reset">RESET</button>
+    </div>
+    <div id="PSM_section">
+      <h3 id="power_status">ON</h3>
+      <button id="power_saving" value="PSM">Power Saving Mode</button>
+    </div>
+
+
+
+
+    <script src="./src/thermostat.js"></script>
+    <script src="./src/jquery-3.3.1.js"></script>
+    <script src="./src/events.js"></script>
+
+  </body>
+</html>
